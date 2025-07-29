@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanchali Singhal | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #ffd700;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+    }
+
+    .home-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 40px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+    }
+
+    .home-image {
+      max-width: 350px;
+      margin-top: 2rem;
+    }
+
+    .home-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .home-text {
+      max-width: 600px;
+    }
+
+    .home-text h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .home-text h2::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 4px;
+      background-color: #d62828;
+      margin-top: 6px;
+    }
+
+    .home-text h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .home-text h3::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 3px;
+      background-color: #d62828;
+      margin-top: 6px;
+    }
+
+    .home-text p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .home-text ul {
+      padding-left: 1.2rem;
+    }
+
+    .home-text ul li {
+      margin-bottom: 10px;
+    }
+
+    /* footer style */
+    footer {
+      background: #ffd700;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* work with me style */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: #555;
+      font-size: 2rem;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      color: #007bff;
+    }
+
+    .yellow-section {
+      background-color: #ffd700;
+      padding: 3rem 1rem;
+    }
+
+    .yellow-section h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .yellow-section h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Timeline style */
+    #timeline {
+      padding: 80px 20px;
+      background-color: #f8f8f8;
+    }
+
+    .timeline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right top, #888, #000);
+      z-index: 1;
+    }
+
+    .step {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      width: 180px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .step img {
+      width: 80px;
+      height: auto;
+      margin: 0 auto 10px auto;
+      filter: grayscale(100%);
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: filter 0.3s ease;
+    }
+
+    .step:hover img {
+      filter: grayscale(0%);
+    }
+
+    .step h4 {
+      margin: 10px 0 5px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .step .industry {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .step .duration {
+      font-size: 13px;
+      color: #333;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .step .desc {
+      font-size: 13px;
+      color: #444;
+    }
+
+    /* Experience style */
+    #experience {
+      padding: 80px 20px;
+      background-color: #fff;
+    }
+
+    .experience-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .experience-card {
+      background: #fefefe;
+      border-radius: 12px;
+      padding: 25px;
+      width: 260px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .experience-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .experience-card .company {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .experience-card .duration {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .experience-card ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .experience-card ul li {
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    .experience-card img {
+      display: block;
+      margin: 0 auto 15px auto;
+      max-width: 120px;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    .experience-card:hover img {
+      filter: grayscale(0%);
+    }
+
+    /* Education style */
+    .edu-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .edu-card {
+      flex: 1 1 500px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .edu-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .edu-logo {
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    .edu-card:hover .edu-logo {
+      filter: grayscale(0%);
+    }
+
+    .edu-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .edu-subtitle {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .edu-desc {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 12px;
+      color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .edu-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .edu-logo {
+        margin-bottom: 16px;
+      }
+    }
+
+    nav a {
+      color: #000;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #d62828;
+    }
+
+    .category-nav {
+      background-color: #fcd800;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 720px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .category-nav a {
+      font-weight: 100;
+      font-size: 0.95rem;
+      color: #000;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.3s ease;
+    }
+
+    .category-nav a:hover {
+      color: #d62828;
+      /* red */
+    }
+  </style>
+
+<body>
+
+
+  <header>
+    <h1>Sanchali Singhal</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#timeline">Career Timeline</a>
+      <!-- <a href="#experience">Experience</a> -->
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" style="background-color: #fff; padding: 80px 20px 30px;">
+    <div class="container" style="max-width: 1000px; margin: 0 auto; text-align: center;">
+      <h1 style="font-size: 3rem; font-weight: 800; color: #111;">Sanchali Singhal</h1>
+      <div style="width: 80px; height: 4px; background-color: #e63946; margin: 16px auto 24px; border-radius: 2px;">
+      </div>
+      <p style="font-size: 1rem; color: #555; max-width: 600px; margin: 0 auto;">
+        Hello! Glad to see you here. </p>
+      <p style="font-size: 1rem; color: #555; max-width: 600px; margin: 0 auto;"> This is a collection of my personal
+        projects and professional work that
+        showcase my journey in the field of data science and advanced analytics.
+      <p style="font-size: 1rem; color: #555; max-width: 600px; margin: 0 auto;">I hope you find it insightful and
+        inspiring.</p>
+    </div>
+  </section>
+
+  <!-- Category Navigation -->
+  <div style="display: flex; justify-content: center; margin-top: 30px;">
+    <nav class="category-nav">
+      <a href="bi-projects.html">Data Visualization</a>
+      <a href="ds-projects.html">Data Science</a>
+      <a href="de-projects.html">Data Engineering</a>
+    </nav>
+  </div>
+
+
+  <!-- About me section -->
+  <section class="home-container" id="about">
+    <div class="home-image">
+      <img src="images/profile.JPG" alt="Sanchali Singhal" />
+    </div>
+    <div class="home-text">
+      <h2>About Me</h2>
+      <p>I am a senior analytics engineer and data scientist with over 7 years of experience helping Fortune 500
+        companies drive strategic growth through data-driven insights.</p>
+      <p>I've held roles across data science and data engineering at organizations like Republic Services, HSAG Inc.
+        and
+        HSBC Global Technology.</p>
+      <p>I hold an M.S. in Business Analytics from Arizona State University and B. Tech in ECE from Galgotias
+        University.
+      </p>
+      <p>Having lived and worked in both the U.S. and India, I bring a global perspective to my work and an
+        understanding of diverse markets.</p>
+      <p>Besides data science and storytelling, I like photography and traveling.</p>
+
+      <h3>What I Do</h3>
+      <p>As a seasoned analytics professional, I specialize in:</p>
+      <ul>
+        <li>Designing robust and scalable data pipelines with tools like <strong>SQL, Python, and R</strong></li>
+        <li>Building compelling data visualizations and interactive dashboards using <strong>Tableau and Power
+            BI</strong></li>
+        <li>Applying advanced statistical models and <strong>predictive analytics</strong> to uncover trends and
+          predict
+          outcomes.</li>
+        <li>Leveraging cloud platforms like <strong>Azure, Snowflake and AWS</strong> to deliver efficient, end-to-end
+          ML solutions.</li>
+        <li>Partnering closely with stakeholders to define project scopes, and ensure alignment with business
+          objectives.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- timeline Section -->
+  <section id="timeline" style="padding: 60px 20px; position: relative; overflow: hidden;">
+    <div style="
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+
+    background-size: cover;
+    opacity: 0.5;
+    z-index: 1;
+  "></div>
+    <div style="
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 40px 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  ">
+      <h2 class="text-center mb-5" style="font-size: 2rem; font-weight: 700; color: #222;">Career Timeline</h2>
+      <div class="timeline">
+        <div class="step">
+          <img src="images/hsbc-logo-2.png" alt="HSBC Logo" />
+          <h4>Business Analyst</h4>
+          <div class="industry">Retail Banking</div>
+          <div class="duration">
+            <span class="range">2016 - 2017</span>
+            <span class="length">(1.5 years)</span>
+          </div>
+          <div class="desc">Engaged in product development lifecycle and performance measurement.</div>
+        </div>
+        <div class="step">
+          <img src="images/srp-logo.jpeg" alt="SRP Logo" />
+          <h4>Data Science Consultant</h4>
+          <div class="industry">Utility</div>
+          <div class="duration">
+            <span class="range">2018 - 2019</span>
+            <span class="length">(6 months)</span>
+          </div>
+          <div class="desc">Built predictive models to forecast Electric Vehicle energy consumption.</div>
+        </div>
+        <div class="step">
+          <img src="images/hsag-logo.png" alt="HSAG Logo" />
+          <h4>Data Scientist</h4>
+          <div class="industry">Healthcare</div>
+          <div class="duration">
+            <span class="range">2019 - 2021</span>
+            <span class="length">(2 years)</span>
+          </div>
+          <div class="desc">Developed and maintained ML and NLP models to improve healthcare delivery.</div>
+        </div>
+        <div class="step">
+          <img src="images/rsg-logo-2.png" alt="RSG Logo" />
+          <h4>Senior Analytics Engineer</h4>
+          <div class="industry">Waste Management</div>
+          <div class="duration">
+            <span class="range">2021 - 2024</span>
+            <span class="length">(3 years)</span>
+          </div>
+          <div class="desc">Led analytics projects delivering price optimization and revenue growth.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Experience Section -->
+  <!-- <section id="experience">
+    <h2 class="text-center mb-5" style="font-size: 2rem; font-weight: 700; color: #222;">Experience</h2>
+
+    <div class="experience-cards">  -->
+
+  <!-- Republic Services -->
+  <!-- <div class="experience-card">
+        <a href="https://www.republicservices.com" target="_blank">
+          <img src="images/rsg-logo-2.png" alt="Republic Services Logo">
+        </a>
+        <h4>Sr. Analytics Engineer</h4>
+        <div class="company">Republic Services, Phoenix</div>
+        <div class="duration">Jun 2021 – May 2024</div>
+        <ul>
+          <li>point </li>
+          <li>point</li>
+          <li>point</li>
+          <li>point</li>
+          <li>point</li>
+        </ul>
+      </div> -->
+
+  <!-- HSAG -->
+  <!-- <div class="experience-card">
+        <a href="https://www.hsag.com" target="_blank">
+          <img src="images/hsag-logo.png" alt="HSAG Logo">
+        </a>
+        <h4>Data Scientist</h4>
+        <div class="company">HSAG, Phoenix</div>
+        <div class="duration">Jul 2019 – May 2021</div>
+        <ul>
+          <li>point </li>
+          <li>point</li>
+          <li>point</li>
+          <li>point</li>
+          <li>point</li>
+        </ul>
+      </div> -->
+
+  <!-- SRP -->
+  <!-- <div class="experience-card">
+        <a href="https://www.srpnet.com" target="_blank">
+          <img src="images/srp-logo.jpeg" alt="SRP Logo">
+        </a>
+        <h4>Data Science Consultant</h4>
+        <div class="company">SRP, Tempe</div>
+        <div class="duration">Dec 2018 – May 2019</div>
+        <ul>
+          <li>point </li>
+          <li>point</li>
+          <li>point</li>
+          <li>point</li>
+          <li>point</li>
+        </ul>
+      </div> -->
+
+  <!-- HSBC -->
+  <!-- <div class="experience-card">
+        <a href="https://www.hsbc.com" target="_blank">
+          <img src="images/hsbc-logo-2.png" alt="HSBC Logo">
+        </a>
+        <h4>Business Analyst</h4>
+        <div class="company">HSBC, Pune</div>
+        <div class="duration">Jun 2016 – Nov 2017</div>
+        <ul>
+          <li>point </li>
+          <li>point</li>
+          <li>point</li>
+          <li>point</li>
+          <li>point</li>
+        </ul>
+      </div>
+
+    </div> -->
+
+  <!-- </section> -->
+
+  <!-- Education Section -->
+  <section id="education" style="background-color:#f8f8f8; padding: 80px 20px;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+
+      <!-- Section Title with Icon -->
+      <h2 class="text-center mb-5"
+        style="font-size: 2rem; font-weight: 700; color: #222; display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <i class="bi bi-mortarboard-fill" style="font-size: 1.8rem; color: #333;"></i>
+        Education
+      </h2>
+
+      <!-- Two Side-by-Side Cards -->
+      <div class="edu-wrapper">
+
+        <!-- ASU Card -->
+        <div class="edu-card">
+          <div class="edu-content">
+            <a href="https://wpcarey.asu.edu/masters-programs/business-analytics" target="_blank">
+              <img src="images/asu-logo.png" alt="ASU Logo" class="edu-logo">
+            </a>
+            <div>
+              <h3 class="edu-title">Master of Science in Business Analytics</h3>
+              <p class="edu-subtitle"><strong>Arizona State University</strong>, 2018 – 2019</p>
+              <p class="edu-desc">Coursework and projects focused on applied statistics, machine learning, and data
+                visualization.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- GU Card -->
+        <div class="edu-card">
+          <div class="edu-content">
+            <a href="https://www.galgotiasuniversity.edu.in/" target="_blank">
+              <img src="images/galgotias-logo.png" alt="Galgotias Logo" class="edu-logo">
+            </a>
+            <div>
+              <h3 class="edu-title">B.Tech in Electronics and Communication Engineering</h3>
+              <p class="edu-subtitle"><strong>Galgotias University</strong>, 2012 – 2016</p>
+              <p class="edu-desc">Focus on communication systems and embedded technologies.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="yellow-section text-center">
+      <h2 class="mb-4">Work with Me</h2>
+      <div class="social-links mb-4">
+        <a href="https://www.linkedin.com/in/sanchalisinghal/" target="_blank"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/datasanchali" target="_blank"><i class="bi bi-github"></i></a>
+        <a href="https://medium.com/@sanchalisinghal" target="_blank"><i class="bi bi-medium"></i></a>
+        <a href="mailto:sanch.singhal@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+      </div>
+    </div>
+
+    <div class="container py-5">
+      <h2 class="text-center mb-4">Get In Touch</h2>
+      <p class="text-center mb-4">Feel free to reach out for collaborations, consulting, or just to say hello!</p>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form action="https://formspree.io/f/xvgrregw" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary px-4">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sanchali Singhal — Built with ♥ and whole lot of HTML/CSS</p>
+  </footer>
+
+</body>
+
+</html>
